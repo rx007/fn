@@ -9,7 +9,7 @@ ADD . $D
 RUN cd $D && go build -ldflags="-s -w" -o fn-status-checker && cp fn-status-checker /tmp/
 
 # final stage
-FROM alpine
+FROM alpine:3.15
 WORKDIR /function
 COPY --from=build-env /tmp/fn-status-checker /function
 ENTRYPOINT ["./fn-status-checker"]

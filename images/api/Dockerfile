@@ -8,7 +8,7 @@ RUN cd $D/cmd/fnserver && go build -o fn-alpine && cp fn-alpine /tmp/
 # final stage: the local fnproject/dind:latest will be either built afresh or
 # whatever is the latest from master, depending on whether we're releasing
 # a newer cut.
-FROM alpine:latest
+FROM alpine:3.18.3
 WORKDIR /app
 COPY --from=build-env /tmp/fn-alpine /app/fnserver
 ENV FN_NODE_TYPE=api
